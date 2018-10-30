@@ -219,6 +219,7 @@ pub const DECORATED                    : c_int = 0x00020005;
 pub const AUTO_ICONIFY                 : c_int = 0x00020006;
 pub const FLOATING                     : c_int = 0x00020007;
 pub const MAXIMIZED                    : c_int = 0x00020008;
+pub const TRANSPARENT_FRAMEBUFFER      : c_int = 0x0002000A;
 
 pub const RED_BITS                     : c_int = 0x00021001;
 pub const GREEN_BITS                   : c_int = 0x00021002;

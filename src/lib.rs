@@ -929,20 +929,21 @@ impl Glfw {
                 ffi::glfwWindowHint(ffi::CONTEXT_VERSION_MAJOR, major as c_int);
                 ffi::glfwWindowHint(ffi::CONTEXT_VERSION_MINOR, minor as c_int)
             },
-            WindowHint::ContextRobustness(robustness)    => unsafe { ffi::glfwWindowHint(ffi::CONTEXT_ROBUSTNESS,       robustness as c_int) },
-            WindowHint::OpenGlForwardCompat(is_compat)   => unsafe { ffi::glfwWindowHint(ffi::OPENGL_FORWARD_COMPAT,    is_compat as c_int) },
-            WindowHint::OpenGlDebugContext(is_debug)     => unsafe { ffi::glfwWindowHint(ffi::OPENGL_DEBUG_CONTEXT,     is_debug as c_int) },
-            WindowHint::OpenGlProfile(profile)           => unsafe { ffi::glfwWindowHint(ffi::OPENGL_PROFILE,           profile as c_int) },
-            WindowHint::Resizable(is_resizable)          => unsafe { ffi::glfwWindowHint(ffi::RESIZABLE,                is_resizable as c_int) },
-            WindowHint::Visible(is_visible)              => unsafe { ffi::glfwWindowHint(ffi::VISIBLE,                  is_visible as c_int) },
-            WindowHint::Decorated(is_decorated)          => unsafe { ffi::glfwWindowHint(ffi::DECORATED,                is_decorated as c_int) },
-            WindowHint::AutoIconify(auto_iconify)        => unsafe { ffi::glfwWindowHint(ffi::AUTO_ICONIFY,             auto_iconify as c_int) },
-            WindowHint::Floating(is_floating)            => unsafe { ffi::glfwWindowHint(ffi::FLOATING,                 is_floating as c_int) },
-            WindowHint::Focused(is_focused)              => unsafe { ffi::glfwWindowHint(ffi::FOCUSED,                  is_focused as c_int) },
-            WindowHint::ContextNoError(is_no_error)      => unsafe { ffi::glfwWindowHint(ffi::CONTEXT_NO_ERROR,         is_no_error as c_int) },
-            WindowHint::ContextCreationApi(api)          => unsafe { ffi::glfwWindowHint(ffi::CONTEXT_CREATION_API,     api as c_int) },
-            WindowHint::ContextReleaseBehavior(behavior) => unsafe { ffi::glfwWindowHint(ffi::CONTEXT_RELEASE_BEHAVIOR, behavior as c_int) },
-            WindowHint::DoubleBuffer(is_dbuffered)       => unsafe { ffi::glfwWindowHint(ffi::DOUBLEBUFFER,             is_dbuffered as c_int) },
+            WindowHint::ContextRobustness(robustness)           => unsafe { ffi::glfwWindowHint(ffi::CONTEXT_ROBUSTNESS,       robustness as c_int) },
+            WindowHint::OpenGlForwardCompat(is_compat)          => unsafe { ffi::glfwWindowHint(ffi::OPENGL_FORWARD_COMPAT,    is_compat as c_int) },
+            WindowHint::OpenGlDebugContext(is_debug)            => unsafe { ffi::glfwWindowHint(ffi::OPENGL_DEBUG_CONTEXT,     is_debug as c_int) },
+            WindowHint::OpenGlProfile(profile)                  => unsafe { ffi::glfwWindowHint(ffi::OPENGL_PROFILE,           profile as c_int) },
+            WindowHint::Resizable(is_resizable)                 => unsafe { ffi::glfwWindowHint(ffi::RESIZABLE,                is_resizable as c_int) },
+            WindowHint::Visible(is_visible)                     => unsafe { ffi::glfwWindowHint(ffi::VISIBLE,                  is_visible as c_int) },
+            WindowHint::Decorated(is_decorated)                 => unsafe { ffi::glfwWindowHint(ffi::DECORATED,                is_decorated as c_int) },
+            WindowHint::AutoIconify(auto_iconify)               => unsafe { ffi::glfwWindowHint(ffi::AUTO_ICONIFY,             auto_iconify as c_int) },
+            WindowHint::Floating(is_floating)                   => unsafe { ffi::glfwWindowHint(ffi::FLOATING,                 is_floating as c_int) },
+            WindowHint::Focused(is_focused)                     => unsafe { ffi::glfwWindowHint(ffi::FOCUSED,                  is_focused as c_int) },
+            WindowHint::ContextNoError(is_no_error)             => unsafe { ffi::glfwWindowHint(ffi::CONTEXT_NO_ERROR,         is_no_error as c_int) },
+            WindowHint::ContextCreationApi(api)                 => unsafe { ffi::glfwWindowHint(ffi::CONTEXT_CREATION_API,     api as c_int) },
+            WindowHint::ContextReleaseBehavior(behavior)        => unsafe { ffi::glfwWindowHint(ffi::CONTEXT_RELEASE_BEHAVIOR, behavior as c_int) },
+            WindowHint::DoubleBuffer(is_dbuffered)              => unsafe { ffi::glfwWindowHint(ffi::DOUBLEBUFFER,             is_dbuffered as c_int) },
+            WindowHint::TransparentFrameBuffer(is_transparent)  => unsafe { ffi::glfwWindowHint(ffi::TRANSPARENT_FRAMEBUFFER,  is_transparent as c_int) },
         }
     }
 
@@ -1465,7 +1466,14 @@ pub enum WindowHint {
     ///
     /// Note that setting this to false will make `swap_buffers` do nothing useful,
     /// and your scene will have to be displayed some other way.
-    DoubleBuffer(bool)
+    DoubleBuffer(bool),
+    /// Specifies whether the window framebuffer will be transparent.
+    ///
+    /// If enabled and supported by the system, the window framebuffer
+    /// alpha channel will be used to combine the framebuffer with the background.  
+    ///
+    /// This does not affect window decorations. 
+    TransparentFrameBuffer(bool)
 }
 
 /// Client API tokens.
